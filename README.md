@@ -1,14 +1,26 @@
-# TypeScript GitHub Action
+# Dongyo
 
-A template for creating GitHub Actions with TypeScript.
+A GitHub Action for activating and using various coding agents like Amp and Claude with configurable models and trigger words.
 
 ## Usage
 
 ```yaml
-uses: ./
+uses: ivanleomk/dongyo@v1
 with:
-  myInput: 'World'
+  agent: 'claude'           # Which agent to use (amp, claude, etc.)
+  model: 'claude-3-opus'    # Model to use for the agent
+  trigger-word: '@claude'   # Trigger word to activate the agent
 ```
+
+## Inputs
+
+- `agent` - Which coding agent to use (default: 'amp')
+- `model` - Model to use for the agent (default: 'claude-3-sonnet')  
+- `trigger-word` - Trigger word to activate the agent (default: '@agent')
+
+## Outputs
+
+- `result` - Result from the coding agent
 
 ## Development
 
