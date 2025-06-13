@@ -19,5 +19,5 @@ outputs:
   result:
     description: 'Result from the coding agent'
 runs:
-  using: 'node22'
+  using: 'node20'
   main: 'dist/index.js'

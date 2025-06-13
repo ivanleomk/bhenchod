@@ -2,59 +2,42 @@
 
 A GitHub Action for activating and using various coding agents like Amp and Claude with configurable models and trigger words.
 
-## Usage
+## Quick Start
+
+1. Create `.github/workflows/dongyo.yml` in your repository:
 
 ```yaml
-uses: ivanleomk/dongyo@v1
-with:
-  agent: 'claude'           # Which agent to use (amp, claude, etc.)
-  model: 'claude-3-opus'    # Model to use for the agent
-  trigger-word: '@claude'   # Trigger word to activate the agent
+name: Benchod AI Assistant
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  dongyo:
+    if: contains(github.event.comment.body, '@benchod')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Code
+        uses: ivanleomk/bhenchod@0.0.1
+        with:
+          agent: 'claude'
+          model: 'claude-3-sonnet'
+          trigger-word: '@amp'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 ```
 
-## Inputs
+2. Add your API keys to repository secrets:
 
-- `agent` - Which coding agent to use (default: 'amp')
-- `model` - Model to use for the agent (default: 'claude-3-sonnet')  
-- `trigger-word` - Trigger word to activate the agent (default: '@agent')
+   - Go to Settings → Secrets and variables → Actions
+   - Add `ANTHROPIC_API_KEY` with your Anthropic API key
 
-## Outputs
-
-- `result` - Result from the coding agent
-
-## Development
-
-Install the dependencies
-```bash
-npm install
-```
-
-Build the typescript and package it for distribution
-```bash
-npm run build && npm run package
-```
-
-Run the tests :heavy_check_mark:
-```bash
-npm test
-```
-
-## Package for distribution
-
-GitHub Actions will run the entry point from the action.yml. Packaging assembles the code into one file that can be checked in to Git, enabling fast and reliable execution and preventing the need to check in node_modules.
-
-Actions are run from GitHub repos so we will checkin the packed dist folder.
-
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
-```bash
-npm run package
-git add dist
-git commit -a -m "prod dependencies"
-git push origin releases/v1
-```
-
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
-
-Your action is now published! :rocket:
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
+3. Comment `@benchod` on any issue or PR to activate!
