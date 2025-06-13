@@ -17,7 +17,7 @@ on:
 
 jobs:
   dongyo:
-    if: contains(github.event.comment.body, '@benchod')
+    if: contains(github.event.comment.body, '@bhenchod')
     runs-on: ubuntu-latest
 
     steps:
