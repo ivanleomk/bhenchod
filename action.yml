@@ -1,14 +1,22 @@
-name: 'TypeScript Action'
-description: 'A GitHub action written in TypeScript'
-author: 'Your Name'
+name: 'Dongyo'
+description: 'A GitHub Action for activating and using various coding agents like Amp and Claude with configurable models and trigger words'
+author: 'Ivan Leo'
 inputs:
-  myInput:
-    description: 'Input to use'
-    required: true
-    default: 'World'
+  agent:
+    description: 'Which coding agent to use (amp, claude, etc.)'
+    required: false
+    default: 'amp'
+  model:
+    description: 'Model to use for the agent'
+    required: false
+    default: 'claude-3-sonnet'
+  trigger-word:
+    description: 'Trigger word to activate the agent'
+    required: false
+    default: '@agent'
 outputs:
-  myOutput:
-    description: 'Output from action'
+  result:
+    description: 'Result from the coding agent'
 runs:
-  using: 'node20'
+  using: 'node22'
   main: 'dist/index.js'
