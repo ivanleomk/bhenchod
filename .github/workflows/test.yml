@@ -16,5 +16,4 @@ jobs:
           bun-version: latest
       - run: |
           bun install
-      - run: |
-          bun run all
+      - run: bun run build

@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-import { run } from '../src/main'
+import {run} from '../src/main'
 
 // Mock the GitHub Actions toolkit modules
 jest.mock('@actions/core')
@@ -18,10 +18,14 @@ describe('Dongyo GitHub Action', () => {
     it('should handle default inputs', async () => {
       mockCore.getInput.mockImplementation((name: string) => {
         switch (name) {
-          case 'agent': return 'amp'
-          case 'model': return 'claude-3-sonnet'
-          case 'trigger-word': return '@agent'
-          default: return ''
+          case 'agent':
+            return 'amp'
+          case 'model':
+            return 'claude-3-sonnet'
+          case 'trigger-word':
+            return '@agent'
+          default:
+            return ''
         }
       })
 
@@ -35,16 +39,22 @@ describe('Dongyo GitHub Action', () => {
     it('should handle custom inputs', async () => {
       mockCore.getInput.mockImplementation((name: string) => {
         switch (name) {
-          case 'agent': return 'claude'
-          case 'model': return 'claude-3-opus'
-          case 'trigger-word': return '@claude'
-          default: return ''
+          case 'agent':
+            return 'claude'
+          case 'model':
+            return 'claude-3-opus'
+          case 'trigger-word':
+            return '@claude'
+          default:
+            return ''
         }
       })
 
       await run()
 
-      expect(mockCore.info).toHaveBeenCalledWith('Dongyo: Activating claude agent with model claude-3-opus')
+      expect(mockCore.info).toHaveBeenCalledWith(
+        'Dongyo: Activating claude agent with model claude-3-opus'
+      )
       expect(mockCore.info).toHaveBeenCalledWith('Trigger word: @claude')
     })
   })
@@ -53,10 +63,14 @@ describe('Dongyo GitHub Action', () => {
     it('should set correct output', async () => {
       mockCore.getInput.mockImplementation((name: string) => {
         switch (name) {
-          case 'agent': return 'amp'
-          case 'model': return 'claude-3-sonnet'
-          case 'trigger-word': return '@agent'
-          default: return ''
+          case 'agent':
+            return 'amp'
+          case 'model':
+            return 'claude-3-sonnet'
+          case 'trigger-word':
+            return '@agent'
+          default:
+            return ''
         }
       })
 
@@ -93,7 +107,7 @@ describe('Dongyo GitHub Action', () => {
           }
         }
       }
-      
+
       Object.defineProperty(github, 'context', {
         value: mockContext,
         writable: true
