@@ -1,0 +1,3 @@
+- look for a linear issue to tag your changes to
+- Make sure you can find one, and if one doesn't exist, then just create one with a clear description of the problem and an acceptance criteria
+- clarify the specific project that we're tagging this to , the scope that we should be working with and then write code. Don't just jump into things
