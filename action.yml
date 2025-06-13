@@ -1,4 +1,4 @@
-name: 'Rivu'
+name: 'bhenchod'
 description: 'A GitHub Action for activating and using various coding agents like Amp and Claude with configurable models and trigger words'
 author: 'Ivan Leo'
 inputs:
