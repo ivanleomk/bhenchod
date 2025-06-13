@@ -1,6 +1,7 @@
 name: 'benchod847'
 description: 'A GitHub Action for activating and using various coding agents like Amp and Claude with configurable models and trigger words'
 author: 'Ivan Leo'
+icon: activity
 inputs:
   agent:
     description: 'Which coding agent to use (amp, claude, etc.)'
