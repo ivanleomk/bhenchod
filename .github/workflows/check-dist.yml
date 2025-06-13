@@ -26,7 +26,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Rebuild the dist/ directory
-        run: bun run package
+        run: bun run build && bun run package
 
       - name: Compare the expected and actual dist/ directories
         run: |
