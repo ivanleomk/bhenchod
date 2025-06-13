@@ -1,0 +1,14 @@
+name: 'TypeScript Action'
+description: 'A GitHub action written in TypeScript'
+author: 'Your Name'
+inputs:
+  myInput:
+    description: 'Input to use'
+    required: true
+    default: 'World'
+outputs:
+  myOutput:
+    description: 'Output from action'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
