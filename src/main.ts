@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
 
-async function run(): Promise<void> {
+export async function run(): Promise<void> {
   try {
     const agent = core.getInput('agent')
     const model = core.getInput('model')
@@ -22,4 +22,6 @@ async function run(): Promise<void> {
   }
 }
 
-run()
+if (require.main === module) {
+  run()
+}
